@@ -28,7 +28,11 @@
         <van-grid-item icon="balance-o" text="我的余额" />
         <van-grid-item icon="user-circle-o" text="我的砍价" />
         <van-grid-item icon="points" text="推广员中心" />
-        <van-grid-item icon="user-circle-o" text="收货人信息" />
+        <van-grid-item
+          icon="user-circle-o"
+          text="收货人信息"
+          @click="handleAddress"
+        />
       </van-grid>
     </div>
   </div>
@@ -52,6 +56,9 @@ export default {
       if (localStorage.getItem("token")) {
         this.token = true;
       }
+    },
+    handleAddress() {
+      this.$router.push("/address");
     },
   },
 };

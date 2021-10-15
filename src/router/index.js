@@ -68,6 +68,20 @@ const routes = [
     },
   },
   {
+    path: "/address",
+    component: () => import("../views/Address.vue"),
+    meta: {
+      title: "我的收货地址",
+    },
+  },
+  {
+    path: "/add",
+    component: () => import("../views/Add.vue"),
+    meta: {
+      title: "新增收货地址",
+    },
+  },
+  {
     path: "*",
     component: () => import("../views/NotFound.vue"),
     meta: {

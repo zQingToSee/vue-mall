@@ -17,13 +17,13 @@
 
       <h2>
         <span>￥</span>
-        <span>115.00</span>
+        <span>{{ detailList.currentPrice }}</span>
         <i>会员专享</i>
       </h2>
 
-      <p class="text1">普通价 ￥125.00</p>
-      <h3>帮宝适一级帮</h3>
-      <p class="text2">使用于小于5kg的宝宝</p>
+      <p class="text1">普通价 ￥{{ detailList.originalPrice }}</p>
+      <h3>{{ detailList.productName }}</h3>
+      <p class="text2">{{ detailList.title }}</p>
 
       <!-- 商品规格 -->
       <p class="info" @click="clickInfo">
@@ -70,7 +70,7 @@ export default {
         // 可以理解为一个商品可以有多个规格类目，一个规格类目下可以有多个规格值。
         tree: [
           {
-            k: "颜色", // skuKeyName：规格类目名称
+            k: "尺寸", // skuKeyName：规格类目名称
             k_s: "s1", // skuKeyStr：sku 组合列表（下方 list）中当前类目对应的 key 值，value 值会是从属于当前类目的一个规格值 id
             v: [
               {
@@ -134,14 +134,6 @@ export default {
             );
           });
         },
-        // 可选项，自定义图片上传逻辑，使用此选项时，会禁用原生图片选择
-        customUpload: () => {
-          return new Promise((resolve) => {
-            setTimeout(() => {
-              resolve("https://img01.yzcdn.cn/vant/leaf.jpg");
-            }, 1000);
-          });
-        },
         // 最大上传体积 (MB)
         uploadMaxSize: 3,
         // placeholder 配置
@@ -163,9 +155,11 @@ export default {
   created() {
     this.productId = this.$route.params.id;
     this.getData({ productId: this.productId });
+    this.sku.price = this.detailList.currentPrice;
+    this.goods.picture = this.detailList.imgUrl;
   },
   computed: {
-    ...mapState("detail", ["imgList"]),
+    ...mapState("detail", ["imgList", "detailList"]),
   },
   methods: {
     ...mapActions("detail", ["getData"]),

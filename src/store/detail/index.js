@@ -4,11 +4,13 @@ const detailmodule = {
   namespaced: true,
   state: {
     imgList: [],
+    detailList: [],
   },
   mutations: {
     changeData(state, payload) {
-      console.log(payload);
+      console.log(payload.result);
       state.imgList = payload.result.imgArr;
+      state.detailList = payload.result;
     },
   },
   actions: {
