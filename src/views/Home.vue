@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <router-view />
+    <!-- 缓存组件,配合meta元信息使用 -->
+    <keep-alive>
+      <router-view v-if="!$route.meta.notRequireAlive" />
+    </keep-alive>
+    <router-view v-if="$route.meta.notRequireAlive" />
 
     <!-- 底部栏 -->
     <van-tabbar v-model="active" active-color="#ed8842" :route="true">
@@ -21,14 +25,6 @@ export default {
       active: 0,
     };
   },
-
-  components: {},
-
-  computed: {},
-
-  mounted() {},
-
-  methods: {},
 };
 </script>
 

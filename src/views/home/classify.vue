@@ -23,7 +23,11 @@
     </div>
     <div class="info">
       <ul>
-        <li v-for="item in classList" :key="item.productId">
+        <li
+          v-for="item in classList"
+          :key="item.productId"
+          @click="detailClick(item.productId)"
+        >
           <img :src="item.imgUrl" alt="" />
           <p>{{ item.title }}</p>
         </li>
@@ -44,6 +48,7 @@ export default {
     };
   },
   created() {
+    this.getData("1");
     this.$nextTick(() => {
       new BScroll(".sidebar", {
         scrollY: true,
@@ -60,6 +65,9 @@ export default {
     handleClick(index) {
       const typenum = index + 1;
       this.getData(typenum);
+    },
+    detailClick(id) {
+      this.$router.push("/detail/" + id);
     },
   },
 };

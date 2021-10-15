@@ -8,7 +8,7 @@
       <img src="../../assets/img/购物车为空.png" alt="" class="shopcart-img" />
     </div>
     <!-- 提交订单 -->
-    <van-submit-bar :price="3050" button-text="提交订单">
+    <van-submit-bar :price="0" button-text="结算">
       <van-checkbox v-model="checked">全选</van-checkbox>
     </van-submit-bar>
   </div>
@@ -21,6 +21,7 @@ export default {
       checked: false,
     };
   },
+  created() {},
 };
 </script>
 

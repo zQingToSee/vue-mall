@@ -55,7 +55,6 @@ export default {
   computed: {
     ...mapState("home", ["imgList"]),
   },
-  mounted() {},
 };
 </script>
 
